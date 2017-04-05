@@ -18,7 +18,7 @@ public class GalleryItem {
     public void draw(Canvas canvas, Paint paint) {
         int w = bitmap.getWidth(),h = bitmap.getHeight();
         canvas.save();
-        canvas.translate(x+w/2,y+h/2);
+        canvas.translate(x+w/2,y+h);
         canvas.drawBitmap(bitmap,-w/2,-h/2,paint);
         canvas.restore();
     }

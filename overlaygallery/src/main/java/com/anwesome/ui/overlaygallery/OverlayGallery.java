@@ -33,4 +33,7 @@ public class OverlayGallery {
             galleryView.setVisibility(View.INVISIBLE);
         }
     }
+    public boolean isShown() {
+        return galleryView!=null && galleryView.getVisibility() == View.VISIBLE;
+    }
 }

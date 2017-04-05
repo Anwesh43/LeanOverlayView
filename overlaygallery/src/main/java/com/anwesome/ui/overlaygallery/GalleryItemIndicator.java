@@ -43,22 +43,28 @@ public class GalleryItemIndicator {
             indicator.setActive(true);
         }
     }
+    public void deactivate() {
+        for(Indicator indicator:indicators) {
+            indicator.setActive(false);
+        }
+    }
     private class Indicator {
         private float x,y;
         private boolean isActive = false;
         public Indicator(float x,float y,boolean isActive) {
             this.x = x;
             this.y = y;
+            this.isActive = isActive;
         }
         public void setActive(boolean isActive) {
             this.isActive = isActive;
         }
         public void draw(Canvas canvas, Paint paint) {
-            paint.setColor(Color.parseColor("#E0E0E0"));
+            paint.setColor(Color.parseColor("#9E9E9E"));
             if(isActive) {
-                paint.setColor(Color.WHITE);
+                paint.setColor(Color.parseColor("#FAFAFA"));
             }
-            canvas.drawCircle(x,y,size,paint);
+            canvas.drawCircle(x,y,size/2,paint);
         }
     }
 }

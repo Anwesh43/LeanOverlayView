@@ -13,10 +13,10 @@ public class Screen {
         return x;
     }
     public void startMoving(int dir) {
-        this.dir = dir;
+        this.dir = -1*dir;
     }
     public void move() {
-        this.x+=w/10*dir;
+        this.x+=w/5*dir;
         if(Math.abs(x-prevX) >= w) {
             prevX = x;
             dir = 0;

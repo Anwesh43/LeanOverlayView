@@ -25,7 +25,6 @@ public class Gallery {
         galleryItemIndicator = new GalleryItemIndicator(w/2,(4*h)/5,w/30,bitmaps.size());
     }
     public void draw(Canvas canvas, Paint paint) {
-        canvas.drawColor(Color.parseColor("#AAFFFFFF"));
         float x = screen.getX();
         canvas.save();
         canvas.translate(x,0);
@@ -40,12 +39,15 @@ public class Gallery {
     }
     public boolean stop() {
         boolean stop = screen.stoppedMoving();
+        galleryItemIndicator.deactivate();
         galleryItemIndicator.update(index+=dir);
         dir = 0;
         return stop;
     }
     public void startMovingScreen(int dir) {
-        this.dir = dir;
-        screen.startMoving(dir);
+        if((dir == 1 && index < galleryItems.size()-1) || (dir == -1 && index>0)) {
+            this.dir = dir;
+            screen.startMoving(dir);
+        }
     }
 }

@@ -37,6 +37,9 @@ public class GalleryView extends View {
         time++;
         if(isAnimated) {
             gallery.updateScreen();
+            if(gallery.stop()) {
+                isAnimated = false;
+            }
             try {
                 Thread.sleep(50);
                 invalidate();
@@ -57,7 +60,7 @@ public class GalleryView extends View {
             return true;
         }
         public boolean onFling(MotionEvent e1,MotionEvent e2,float velx,float vely) {
-            boolean yDir = Math.abs(velx)<Math.abs(vely);
+            boolean yDir = Math.abs(velx)>Math.abs(vely);
             if(yDir && vely!=0 && !isAnimated) {
                 int dir = (int)(vely/Math.abs(vely));
                 gallery.startMovingScreen(dir);
