@@ -1,7 +1,5 @@
 package com.anwesome.ui.overlaygallery;
 
-import android.graphics.PointF;
-
 /**
  * Created by anweshmishra on 05/04/17.
  */
