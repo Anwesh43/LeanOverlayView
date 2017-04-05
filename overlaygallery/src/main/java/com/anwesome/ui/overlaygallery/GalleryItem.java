@@ -16,9 +16,10 @@ public class GalleryItem {
         this.y = y;
     }
     public void draw(Canvas canvas, Paint paint) {
+        int w = bitmap.getWidth(),h = bitmap.getHeight();
         canvas.save();
-        canvas.translate(x,y);
-        canvas.drawBitmap(bitmap,-bitmap.getWidth()/2,-bitmap.getHeight()/2,paint);
+        canvas.translate(x+w/2,y+h/2);
+        canvas.drawBitmap(bitmap,-w/2,-h/2,paint);
         canvas.restore();
     }
     public boolean inScreen(float x) {
