@@ -2,6 +2,8 @@ package com.anwesome.ui.overlaygallery;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -27,13 +29,41 @@ public class OverlayGallery {
         if(galleryView.getVisibility() == View.INVISIBLE) {
             galleryView.setVisibility(View.VISIBLE);
         }
+        hideOrShowActionBar(false);
     }
     public void hide() {
         if(galleryView!=null) {
             galleryView.setVisibility(View.INVISIBLE);
+            hideOrShowActionBar(true);
         }
     }
     public boolean isShown() {
         return galleryView!=null && galleryView.getVisibility() == View.VISIBLE;
+    }
+    private void hideOrShowActionBar(boolean show) {
+        ActionBar supportActionBar = null;
+        android.app.ActionBar actionBar = null;
+        if(activity instanceof AppCompatActivity) {
+            supportActionBar = ((AppCompatActivity)activity).getSupportActionBar();
+        }
+        else {
+            actionBar = activity.getActionBar();
+        }
+        if(show) {
+            if(actionBar!=null) {
+                actionBar.show();
+            }
+            if(supportActionBar!=null) {
+                supportActionBar.show();
+            }
+        }
+        else {
+            if(actionBar!=null) {
+                actionBar.hide();
+            }
+            if(supportActionBar!=null) {
+                supportActionBar.hide();
+            }
+        }
     }
 }
